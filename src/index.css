@@ -1,4 +1,10 @@
 :root {
   --font: 'Poppins', sans-serif;
-  --color1: #;
+  --bg-color: #F0F0F0;
+  --color1: #123D7A;
+  --color2: #1f6fb2;
+  --color3: #2da9d7;
+  --color4: #6ec1e4;
+  --color5: #bac7d1;
+  --color6: #343434;
 }
