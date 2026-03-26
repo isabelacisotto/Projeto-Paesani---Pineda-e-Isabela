@@ -2,10 +2,10 @@ import './Card.css';
 
 export function ServicesCard({ name, description, image }) {
     return (
-        <div className="services-card">
+        <div className="card">
             <img src={image} alt={name} className='card-img' />
 
-            <div className="services-info">
+            <div className="card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
                 <button className="play-btn"> Contrate já! </button>
@@ -16,10 +16,10 @@ export function ServicesCard({ name, description, image }) {
 
 export function ProductsCard({ name, description, image }) {
     return (
-        <div className="products-card">
+        <div className="card">
             <img src={image} alt={name} className='card-img' />
 
-            <div className="products-info">
+            <div className="card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
                 <button className="play-btn"> Compre aqui! </button>

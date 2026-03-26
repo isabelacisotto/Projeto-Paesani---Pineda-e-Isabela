@@ -1,4 +1,22 @@
 :root {
   --font: 'Poppins', sans-serif;
-  --color1: #;
+  --bg-color: #f0f0f0;
+  --color1: #123d7a;
+  --color2: #1f6fb2;
+  --color3: #2da9d7;
+  --color4: #6ec1e4;
+  --color5: #f0f0f0;
+  --color6: #bac7d1;
+  --color7: #343434;
+}
+
+* {
+  font-family: var(--font);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg-color);
 }
