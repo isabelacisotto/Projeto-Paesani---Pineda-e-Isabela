@@ -1,7 +1,7 @@
 import { CalendarClock, ShoppingCart, Search } from 'lucide-react';
 import './Header.css'
 
-export function Header() {
+export function Header({ search, setSearch, activeTab, setActiveTab }) {
     return (
         <>
             <header>
@@ -10,15 +10,14 @@ export function Header() {
                 </div>
                 <nav>
                     <div className="search">
-                        <Search color='var(--color2)' size={20} /> <input type="text" placeholder='Pesquisar' />
+                        <Search color='var(--color2)' size={20} /> <input type="text" placeholder='Pesquisar' value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <ul>
-                        <li><a href="#">Serviços</a></li>
-                        <li><a href="#">Produtos</a></li>
-                        <li><a href="#">Agendamentos</a></li>
-                        <li><a href="#">Contato</a></li>
-                        <li><a href="#">Endereço</a></li>
-                        <li><a href="#">Suporte</a></li>
+                        <li className={activeTab === 'inicio' ? 'active' : ''} onClick={() => setActiveTab('inicio')}>Início</li>
+                        <li className={activeTab === 'sobre' ? 'active' : ''} onClick={() => setActiveTab('sobre')}>Sobre</li>
+                        <li className={activeTab === 'contatos' ? 'active' : ''} onClick={() => setActiveTab('contatos')}>Contatos</li>
+                        <li className={activeTab === 'endereco' ? 'active' : ''} onClick={() => setActiveTab('endereco')}>Endereço</li>
+                        <li className={activeTab === 'suporte' ? 'active' : ''} onClick={() => setActiveTab('suporte')}>Suporte</li>
                     </ul>
                 </nav>
                 <div className="icons">
