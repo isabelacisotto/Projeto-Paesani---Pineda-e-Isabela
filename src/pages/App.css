@@ -64,3 +64,20 @@
     padding-left: 10px;
     margin-bottom: 30px;
 }
+
+.paesani-about {
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+    padding: 20px 40px;
+    width: 100%;
+}
+
+.paesani-about-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}

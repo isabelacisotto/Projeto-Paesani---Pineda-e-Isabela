@@ -10,7 +10,8 @@ export function Header({ search, setSearch, activeTab, setActiveTab }) {
                 </div>
                 <nav>
                     <div className="search">
-                        <Search color='var(--color2)' size={20} /> <input type="text" placeholder='Pesquisar' value={search} onChange={(e) => setSearch(e.target.value)} />
+                        <Search color='var(--color2)' size={20} />
+                        <input type="text" placeholder='Pesquisar' value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
                     <ul>
                         <li className={activeTab === 'inicio' ? 'active' : ''} onClick={() => setActiveTab('inicio')}>Início</li>
