@@ -1,9 +1,15 @@
 import { ChartNoAxesCombined, Footprints, Lightbulb, ScrollText, Trophy, Users } from 'lucide-react';
 import './Card.css';
+import { motion } from 'framer-motion';
 
-export function ServicesCard({ name, description, image, index }) {
+export function ServicesCard({ name, description, image }) {
     return (
-        <div className="card" data-aos="fade-right" data-aos-delay={index * 100}>
+        <motion.div className="card"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            viewport={{ once: true }}
+        >
             <img src={image} alt={name} className='card-img' />
 
             <div className="card-info">
@@ -11,13 +17,18 @@ export function ServicesCard({ name, description, image, index }) {
                 <p>{description}</p>
                 <button className="play-btn"> Contrate já! </button>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
-export function ProductsCard({ name, description, image, index }) {
+export function ProductsCard({ name, description, image }) {
     return (
-        <div className="card" data-aos="fade-right" data-aos-delay={index * 100}>
+        <motion.div className="card"
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3 }}
+            viewport={{ once: true }}
+        >
             <img src={image} alt={name} className='card-img' />
 
             <div className="card-info">
@@ -25,26 +36,46 @@ export function ProductsCard({ name, description, image, index }) {
                 <p>{description}</p>
                 <button className="play-btn"> Compre aqui! </button>
             </div>
-        </div>
+        </motion.div>
     )
 }
 
 export function AboutCard({ name, description }) {
     return (
-        <div className="about-card" data-aos="fade-right">
-            <div className="about-card-icon">
-                {name === 'Origem' && <ScrollText size={30} color='var(--color1)' />}
-                {name === 'Primeiros Passos' && <Footprints size={30} color='var(--color1)' />}
-                {name === 'Crescimento' && <ChartNoAxesCombined size={30} color='var(--color1)' />}
-                {name === 'Evolução e Inovação' && <Lightbulb size={30} color='var(--color1)' />}
-                {name === 'Valores e Reconhecimento' && <Trophy size={30} color='var(--color1)' />}
-                {name === 'Compromisso com o Cliente' && <Users size={30} color='var(--color1)' />}
-            </div>
+        <motion.div className="about-card"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            viewport={{ once: true }}
+        >
+            <motion.div className="about-card-icon"
+                initial={{ opacity: 0}}
+                whileInView={{ opacity: 1 }}
+                transition={{ duration: 0.2 }}
+                viewport={{ once: true }}
+            >
+                {name === 'Origem' && <ScrollText size={25} color='var(--color1)' />}
+                {name === 'Primeiros Passos' && <Footprints size={25} color='var(--color1)' />}
+                {name === 'Crescimento' && <ChartNoAxesCombined size={25} color='var(--color1)' />}
+                {name === 'Evolução e Inovação' && <Lightbulb size={25} color='var(--color1)' />}
+                {name === 'Valores e Reconhecimento' && <Trophy size={25} color='var(--color1)' />}
+                {name === 'Compromisso com o Cliente' && <Users size={25} color='var(--color1)' />}
+            </motion.div>
 
             <div className="about-card-info">
-                <h4>{name}</h4>
-                <p>{description}</p>
+                <motion.h4
+                    initial={{ opacity: 0, y: 5 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.5 }}
+                    viewport={{ once: true }}
+                >{name}</motion.h4>
+                <motion.p
+                    initial={{ opacity: 0, y: 5 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.5 }}
+                    viewport={{ once: true }}
+                >{description}</motion.p>
             </div>
-        </div>
+        </motion.div>
     )
 }

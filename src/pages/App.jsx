@@ -3,22 +3,13 @@ import { paesaniProducts, paesaniServices } from "../api/paesani.api"
 import { AboutCard, ProductsCard, ServicesCard } from "../components/Cards/Card"
 import { Header } from "../components/Header"
 import './App.css'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+import { motion } from "framer-motion"
 
 export default function App() {
     const [search, setSearch] = useState("")
     const [activeTab, setActiveTab] = useState("inicio")
     const filteredProducts = paesaniProducts.filter(() => activeTab === 'inicio').filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
     const filteredServices = paesaniServices.filter(() => activeTab === 'inicio').filter((s) => s.name.toLowerCase().includes((search.toLowerCase())));
-
-    useEffect(() => {
-        Aos.init({
-            duration: 800,
-            easing: 'ease-in-out',
-            once: true,
-        })
-    }, [])
 
     return (
         <>
@@ -27,51 +18,51 @@ export default function App() {
             </div>
 
             <main className="main-container">
-                <div className="paesani-services">
-                    <h1 className="paesani-services-title">
-                        {activeTab === 'inicio' && 'Serviços'}
-                        {activeTab === 'sobre' && 'Sobre'}
-                        {activeTab === 'contatos' && 'Contatos'}
-                        {activeTab === 'endereco' && 'Endereço'}
-                        {activeTab === 'suporte' && 'Suporte'}
-                    </h1>
-
-                    <div className="paesani-services-cards">
-                        {filteredServices.length > 0 ? filteredServices.map((s) => (
-                            <ServicesCard
-                                data-aos="fade-left"
-                                key={s.id}
-                                name={s.name}
-                                description={s.description}
-                                image={s.image}
-                            />
-                        )) : <p>{
-                            activeTab === 'inicio' && 'Nenhum serviço encontrado' ||
-                            activeTab === 'contatos' && 'Nenhum contato encontrado' ||
-                            activeTab === 'endereco' && 'Nenhum endereço encontrado' ||
-                            activeTab === 'suporte' && 'Nenhum suporte encontrado'
-                        }</p>}
-                    </div>
-                </div>
-
                 {activeTab === 'inicio' && (
-                    <div className="paesani-products">
-                        <h1 className="paesani-products-title">Produtos</h1>
-                        <div className="paesani-products-cards">
-                            {filteredProducts.length > 0 ? filteredProducts.map((p) => (
-                                <ProductsCard
-                                    key={p.id}
-                                    name={p.name}
-                                    description={p.description}
-                                    image={p.image}
-                                />
-                            )) : <p>Nenhum produto encontrado</p>}
-                        </div>
-                    </div>
+                    <>
+                        <motion.div className="paesani-services"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <h1 className="paesani-services-title">Serviços</h1>
+                            <div className="paesani-services-cards">
+                                {filteredServices.length > 0 ? filteredServices.map((s) => (
+                                    <ServicesCard
+                                        key={s.id}
+                                        name={s.name}
+                                        description={s.description}
+                                        image={s.image}
+                                    />
+                                )) : <p>Nenhum serviço encontrado</p>}
+                            </div>
+                        </motion.div>
+
+                        <motion.div className="paesani-products"
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5 }}
+                            viewport={{ once: true }}
+                        >
+                            <h1 className="paesani-products-title">Produtos</h1>
+                            <div className="paesani-products-cards">
+                                {filteredProducts.length > 0 ? filteredProducts.map((p) => (
+                                    <ProductsCard
+                                        key={p.id}
+                                        name={p.name}
+                                        description={p.description}
+                                        image={p.image}
+                                    />
+                                )) : <p>Nenhum produto encontrado</p>}
+                            </div>
+                        </motion.div>
+                    </>
                 )}
 
                 {activeTab === 'sobre' && (
                     <div className="paesani-about">
+                        <h1 className="paesani-about-title">Sobre</h1>
                         <div className="paesani-about-cards">
                             <AboutCard
                                 key='1'
