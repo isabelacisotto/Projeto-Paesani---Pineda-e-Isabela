@@ -1,15 +1,23 @@
 import { useEffect, useState } from "react"
 import { paesaniProducts, paesaniServices } from "../api/paesani.api"
 import { AboutCard, ProductsCard, ServicesCard } from "../components/Cards/Card"
-import { Header } from "../components/Header"
+import { Header } from "../components/Header/Header"
 import './App.css'
 import { motion } from "framer-motion"
+import { Footer } from "../components/Footer/Footer"
 
 export default function App() {
     const [search, setSearch] = useState("")
     const [activeTab, setActiveTab] = useState("inicio")
     const filteredProducts = paesaniProducts.filter(() => activeTab === 'inicio').filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
     const filteredServices = paesaniServices.filter(() => activeTab === 'inicio').filter((s) => s.name.toLowerCase().includes((search.toLowerCase())));
+
+    useEffect(() => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    }, [activeTab]);
 
     return (
         <>
@@ -20,7 +28,7 @@ export default function App() {
             <main className="main-container">
                 {activeTab === 'inicio' && (
                     <>
-                        <motion.div className="paesani-services"
+                        <motion.div className="paesani-container"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
@@ -39,7 +47,7 @@ export default function App() {
                             </div>
                         </motion.div>
 
-                        <motion.div className="paesani-products"
+                        <motion.div className="paesani-container"
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
@@ -61,7 +69,12 @@ export default function App() {
                 )}
 
                 {activeTab === 'sobre' && (
-                    <div className="paesani-about">
+                    <motion.div className="paesani-container"
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5 }}
+                        viewport={{ once: true }}
+                    >
                         <h1 className="paesani-about-title">Sobre</h1>
                         <div className="paesani-about-cards">
                             <AboutCard
@@ -95,9 +108,10 @@ export default function App() {
                                 description="O sucesso da Paesani está diretamente ligado ao sucesso dos nossos clientes. Por isso, trabalhamos com dedicação total, oferecendo suporte completo e soluções personalizadas para cada necessidade."
                             />
                         </div>
-                    </div>
+                    </motion.div>
                 )}
             </main>
+            <Footer />
         </>
     )
 }
