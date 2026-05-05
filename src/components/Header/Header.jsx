@@ -16,9 +16,9 @@ export function Header({ search, setSearch, activeTab, setActiveTab }) {
                     <ul>
                         <li className={activeTab === 'inicio' ? 'active' : ''} onClick={() => setActiveTab('inicio')}>Início</li>
                         <li className={activeTab === 'sobre' ? 'active' : ''} onClick={() => setActiveTab('sobre')}>Sobre</li>
-                        <a href="#footer">Contatos</a>
-                        <a href="#footer">Endereço</a>
-                        <a href="#">Suporte</a>
+                        <li onClick={() => { document.getElementById("footer").scrollIntoView({ behavior: "smooth", }); }}>Contatos</li>
+                        <li onClick={() => { document.getElementById("footer").scrollIntoView({ behavior: "smooth", }); }}>Endereço</li>
+                        <li className={activeTab === 'suporte' ? 'active' : ''} onClick={() => setActiveTab('suporte')}>Suporte</li>
                     </ul>
                 </nav>
                 <div className="icons">

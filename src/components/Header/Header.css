@@ -8,6 +8,7 @@ header {
     z-index: 1000;
     background-color: var(--bg-color);
     margin-top: 120px;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
