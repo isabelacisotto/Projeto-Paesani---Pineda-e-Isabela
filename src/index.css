@@ -8,12 +8,13 @@
 :root {
   --font: 'Poppins', sans-serif;
   --bg-color: #f0f0f0;
+  --modal-font: #6d6d6d;
   --color1: #123d7a;
   --color2: #1f6fb2;
   --color3: #2da9d7;
   --color4: #6ec1e4;
   --color5: #f0f0f0;
-  --color6: #bac7d1;
+  --color6: #d9d9d9;
   --color7: #343434;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);

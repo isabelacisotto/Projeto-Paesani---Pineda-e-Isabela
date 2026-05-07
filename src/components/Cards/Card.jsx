@@ -21,7 +21,7 @@ export function ServicesCard({ name, description, image }) {
     )
 }
 
-export function ProductsCard({ name, description, image }) {
+export function ProductsCard({ name, description, image, onModalOpen }) {
     return (
         <motion.div className="card"
             initial={{ opacity: 0, y: 10 }}
@@ -34,7 +34,9 @@ export function ProductsCard({ name, description, image }) {
             <div className="card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
-                <button className="play-btn"> Compre aqui! </button>
+                <button className="play-btn" onClick={onModalOpen}>
+                    Compre aqui!
+                </button>
             </div>
         </motion.div>
     )

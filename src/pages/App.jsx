@@ -6,19 +6,17 @@ import "./App.css";
 import { motion } from "framer-motion";
 import { Footer } from "../components/Footer/Footer";
 import { HomeNavButton } from "@/components/Buttons/HomeNavButton";
+import { CardModal } from "@/components/Cards/CardModal";
 
 export default function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
+    const [selectedItem, setSelectedItem] = useState(null);
+
     const filteredProducts = paesaniProducts.filter(() => activeTab === "suporte").filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
     const filteredServices = paesaniServices.filter(() => activeTab === "suporte").filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth",
-        });
-    }, [activeTab]);
+    useEffect(() => {window.scrollTo({ top: 0, behavior: "smooth", })}, [activeTab]);
 
     return (
         <>
@@ -35,18 +33,23 @@ export default function App() {
                 {activeTab === "inicio" && (
                     <motion.div
                         className="paesani-home-container"
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 10 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.5 }}
+                        transition={{ duration: 0.3, delay: 0.4 }}
                         viewport={{ once: true }}
                     >
                         <h1 className="paesani-home-title"> O clima perfeito para os seus melhores momentos.</h1>
                         <h3 className="paesani-home-description">Somos referência em refrigeração e cuidados especializados.</h3>
 
-                        <div className="paesani-home-nav-buttons">
+                        <motion.div className="paesani-home-nav-buttons"
+                            initial={{ opacity: 0, y: 5 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.3, delay: 1 }}
+                            viewport={{ once: true }}
+                        >
                             <HomeNavButton label="Ver Serviços" type={"services"} onClick={() => setActiveTab("suporte")} />
                             <HomeNavButton label="Ver Produtos" type={"products"} onClick={() => setActiveTab("suporte")} />
-                        </div>
+                        </motion.div>
                     </motion.div>
                 )}
 
@@ -92,6 +95,7 @@ export default function App() {
                                             name={p.name}
                                             description={p.description}
                                             image={p.image}
+                                            onModalOpen={() => setSelectedItem(p)}
                                         />
                                     ))
                                 ) : (
@@ -145,6 +149,7 @@ export default function App() {
                         </div>
                     </motion.div>
                 )}
+                {selectedItem && <CardModal item={selectedItem} onClose={() => setSelectedItem(null)} />}
             </main>
 
             <Footer />
