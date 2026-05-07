@@ -11,6 +11,8 @@ import { CardModal } from "@/components/Cards/CardModal";
 export default function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
+    const [selectedItem, setSelectedItem] = useState(null);
+
     const filteredProducts = paesaniProducts.filter(() => activeTab === "suporte").filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
     const filteredServices = paesaniServices.filter(() => activeTab === "suporte").filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
 
