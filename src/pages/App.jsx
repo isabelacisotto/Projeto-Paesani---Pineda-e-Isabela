@@ -10,8 +10,14 @@ import { HomeNavButton } from "@/components/Buttons/HomeNavButton";
 export default function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
-    const filteredProducts = paesaniProducts.filter(() => activeTab === "suporte").filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
-    const filteredServices = paesaniServices.filter(() => activeTab === "suporte").filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
+    
+    const filteredProducts = paesaniProducts
+        .filter(() => activeTab === "suporte")
+        .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
+
+    const filteredServices = paesaniServices
+        .filter(() => activeTab === "suporte")
+        .filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
 
     useEffect(() => {
         window.scrollTo({
@@ -44,8 +50,8 @@ export default function App() {
                         <h3 className="paesani-home-description">Somos referência em refrigeração e cuidados especializados.</h3>
 
                         <div className="paesani-home-nav-buttons">
-                            <HomeNavButton label="Ver Serviços" type={"services"} onClick={() => setActiveTab("suporte")} />
-                            <HomeNavButton label="Ver Produtos" type={"products"} onClick={() => setActiveTab("suporte")} />
+                            <HomeNavButton label="Ver Serviços" type="services" onClick={() => setActiveTab("suporte")} />
+                            <HomeNavButton label="Ver Produtos" type="products" onClick={() => setActiveTab("suporte")} />
                         </div>
                     </motion.div>
                 )}
@@ -59,7 +65,7 @@ export default function App() {
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
-                            <h1 className="paesani-services-title">Serviços</h1>
+                            <h1 id="paesani-services" className="paesani-services-title">Serviços</h1>
                             <div className="paesani-services-cards">
                                 {filteredServices.length > 0 ? (
                                     filteredServices.map((s) => (
@@ -83,7 +89,7 @@ export default function App() {
                             transition={{ duration: 0.5 }}
                             viewport={{ once: true }}
                         >
-                            <h1 className="paesani-products-title">Produtos</h1>
+                            <h1 id="paesani-products" className="paesani-products-title">Produtos</h1>
                             <div className="paesani-products-cards">
                                 {filteredProducts.length > 0 ? (
                                     filteredProducts.map((p) => (
@@ -146,7 +152,6 @@ export default function App() {
                     </motion.div>
                 )}
             </main>
-
             <Footer />
         </>
     );

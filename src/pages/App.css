@@ -1,115 +1,114 @@
 .header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-container {
-    width: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 40px 20px;
-    margin-top: 100px;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 40px 20px;
+  margin-top: 100px;
 }
 
 .paesani-home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 500px;
-    text-align: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 120px;
+  text-align: center;
+  gap: 20px;
 }
 
 .paesani-home-container h1 {
-    font-size: 3.7rem;
-    width: 70%;
-    font-weight: 700;
-    color: var(--color1);
+  font-size: 3.7rem;
+  width: 70%;
+  font-weight: 700;
+  color: var(--color1);
 }
 
 .paesani-home-container h3 {
-    font-size: 1.1rem;
-    font-weight: 500;
-    width: 50%;
-    color: var(--color2);
-    margin: 0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  width: 50%;
+  color: var(--color2);
+  margin: 0;
 }
 
 .paesani-home-container .paesani-home-nav-buttons {
-    display: flex;
-    margin-top: 8px;
-    gap: 20px;
+  display: flex;
+  margin-top: 8px;
+  gap: 20px;
 }
 
 .paesani-container {
-    display: flex;
-    flex-direction: column;
-    margin-top: 3%;
-    margin-bottom: 35px;
-    width: 80%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3%;
+  margin-bottom: 35px;
+  width: 80%;
 }
 
 .paesani-services-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color1);
-    border-left: 5px solid var(--color3);
-    padding-left: 10px;
-    margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color1);
+  border-left: 5px solid var(--color3);
+  padding-left: 10px;
+  margin-bottom: 30px;
 }
 
-
 .paesani-services-cards {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 30px;
 }
 
 .paesani-products-cards {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    flex-wrap: wrap;
-    align-items: stretch;
-    gap: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 30px;
 }
 
 .paesani-products-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color1);
-    border-left: 5px solid var(--color3);
-    padding-left: 10px;
-    margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color1);
+  border-left: 5px solid var(--color3);
+  padding-left: 10px;
+  margin-bottom: 30px;
 }
 
 .paesani-about-title {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--color1);
-    border-left: 5px solid var(--color3);
-    padding-left: 10px;
-    margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color1);
+  border-left: 5px solid var(--color3);
+  padding-left: 10px;
+  margin-bottom: 30px;
 }
 
 .paesani-about-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100%;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+  gap: 20px;
 }
 
 footer {
-    margin-top: 50px;
+  margin-top: 50px;
 }

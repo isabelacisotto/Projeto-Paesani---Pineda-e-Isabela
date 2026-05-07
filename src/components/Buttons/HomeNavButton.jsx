@@ -11,11 +11,13 @@ export function HomeNavButton({ type, label, onClick }) {
             style={ 
                 type === "products" ? { 
                     backgroundColor: "#1F6FB2", 
-                    color: "#F0F0F0"
+                    color: "#F0F0F0",
+                    fontWeight: "500",
                 } : 
                 type === "services" ? { 
                     backgroundColor: "transparent", 
-                    color: "#1F6FB2", 
+                    color: "#1F6FB2",
+                    fontWeight: "500",
                     border: "2px solid #1F6FB2"
                 } : ""
             }>
