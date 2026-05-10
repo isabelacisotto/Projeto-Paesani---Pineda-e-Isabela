@@ -1,6 +1,7 @@
-import { ChartNoAxesCombined, Footprints, Lightbulb, ScrollText, Trophy, Users } from 'lucide-react';
+import { ChartNoAxesCombined, Footprints, Lightbulb, ScrollText, ShoppingCart, Trophy, Users, X } from 'lucide-react';
 import './Card.css';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 export function ServicesCard({ name, description, image }) {
     return (
@@ -79,5 +80,49 @@ export function AboutCard({ name, description }) {
                 >{description}</motion.p>
             </div>
         </motion.div>
+    )
+}
+
+export function CardModal({ item, onClose, addToCart }) {
+    if (!item) return null
+
+    const [quantity, setQuantity] = useState(1);
+    const totalPrice = item.price * quantity;
+
+    return (
+        <>
+            <div className="modal-overlay" onClick={onClose}>
+                <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+                    <div className="modal-body">
+                        <h2>{item.name}</h2>
+                        <p className='modal-category'>{item.modalDescription}</p>
+                        <h1>Por apenas: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</h1>
+                        <p>disponibilidade: {item.availability}</p>
+
+                        <div className="modal-buttons">
+                            <button className="checkout-btn" onClick={() => addToCart(item, quantity)}>
+                                Adicionar ao Carrinho <ShoppingCart size={20} />
+                            </button>
+                            <div className="add-decrease-button">
+                                <button className="decrease-btn" onClick={() => setQuantity(Math.max(1, quantity - 1))}>
+                                    -
+                                </button>
+                                <span className="quantity">{quantity}</span>
+                                <button className="increase-btn" onClick={() => setQuantity(quantity + 1)}>
+                                    +
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="modal-banner-container">
+                        <img className='modal-banner' src={item.image} alt={item.name} />
+                        <button className="close-btn" onClick={onClose}>
+                            <X size={24} />
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }

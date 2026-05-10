@@ -3,10 +3,10 @@ import { paesaniProducts, paesaniServices } from "../api/paesani.api";
 import { AboutCard, ProductsCard, ServicesCard } from "../components/Cards/Card";
 import { Header } from "../components/Header/Header";
 import "./App.css";
-import { motion } from "framer-motion";
 import { Footer } from "../components/Footer/Footer";
 import { HomeNavButton } from "@/components/Buttons/HomeNavButton";
-import { CardModal } from "@/components/Cards/CardModal";
+import { CardModal } from "@/components/Cards/Card";
+import { motion } from 'framer-motion';
 
 export default function App() {
     const [search, setSearch] = useState("");
