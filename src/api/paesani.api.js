@@ -6,6 +6,8 @@ import infraestrutura from '../assets/infraestrutura.jpg'
 import Limpeza from '../assets/limpeza.jpg'
 import manutencao from '../assets/manutencao.jpeg'
 import reparo from '../assets/reparo.webp'
+import slider1 from '../assets/paesaniSlider.png'
+import slider2 from '../assets/paesaniSlider2.png'
 
 export const paesaniServices = [
     {
@@ -70,5 +72,16 @@ export const paesaniProducts = [
         price: 1999.99,
         availability: "Em estoque",
         image: equipamentos
+    }
+]
+
+export const paesaniSlider = [
+    {
+        id: 1,
+        image: slider1
+    },
+    {
+        id: 2,
+        image: slider2
     }
 ]

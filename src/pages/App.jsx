@@ -1,22 +1,38 @@
+import "./App.css";
 import { useEffect, useState } from "react";
-import { paesaniProducts, paesaniServices } from "../api/paesani.api";
+import { paesaniProducts, paesaniServices, paesaniSlider } from "../api/paesani.api";
 import { AboutCard, ProductsCard, ServicesCard } from "../components/Cards/Card";
 import { Header } from "../components/Header/Header";
-import "./App.css";
 import { Footer } from "../components/Footer/Footer";
 import { HomeNavButton } from "@/components/Buttons/HomeNavButton";
 import { CardModal } from "@/components/Cards/Card";
 import { motion } from 'framer-motion';
+import { Slider } from "@/components/Slider/Slider";
+import { SwiperSlide } from "swiper/react";
+import ".././components/Slider/Slider.css";
 
 export default function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
     const [selectedItem, setSelectedItem] = useState(null);
 
-    const filteredProducts = paesaniProducts.filter(() => activeTab === "suporte").filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
-    const filteredServices = paesaniServices.filter(() => activeTab === "suporte").filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
+    const filteredProducts = paesaniProducts
+        .filter(() => activeTab === "services-products")
+        .filter((p) => p.name.toLowerCase().includes(search.toLowerCase()));
 
-    useEffect(() => {window.scrollTo({ top: 0, behavior: "smooth", })}, [activeTab]);
+    const filteredServices = paesaniServices
+        .filter(() => activeTab === "services-products")
+        .filter((s) => s.name.toLowerCase().includes(search.toLowerCase()));
+
+    useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth", }) }, [activeTab]);
+
+    const sliderSettings = {
+        slidesPerView: 1,
+        autoplay: {
+            delay: 3000,
+            disableOnInteraction: false,
+        },
+    }
 
     return (
         <>
@@ -42,14 +58,29 @@ export default function App() {
                         <h3 className="paesani-home-description">Somos referência em refrigeração e cuidados especializados.</h3>
 
                         <div className="paesani-home-nav-buttons">
-                            <HomeNavButton label="Ver Serviços" type={"services"} onClick={() => setActiveTab("suporte")} />
-                            <HomeNavButton label="Ver Produtos" type={"products"} onClick={() => setActiveTab("suporte")} />
+                            <HomeNavButton label="Ver Serviços" type={"services"} onClick={() => setActiveTab("services-products")} />
+                            <HomeNavButton label="Ver Produtos" type={"products"} onClick={() => setActiveTab("services-products")} />
                         </div>
                     </motion.div>
                 )}
 
-                {activeTab === "suporte" && (
+                {activeTab === "services-products" && (
                     <>
+                        <div className="container-slider">
+                            <Slider settings={sliderSettings}>
+                                {paesaniSlider.map((slide) => (
+                                    <SwiperSlide key={slide.id}>
+                                        <div className="slide-content">
+                                            <img src={slide.image} alt={slide.name} className="slider-image" />
+                                            <div className="slide-overlay" style={{ borderBottom: '8px solid $(slide.color)' }}>
+                                                <span>{slide.name}</span>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                ))}
+                            </Slider>
+                        </div>
+
                         <motion.div
                             className="paesani-container"
                             initial={{ opacity: 0, y: 20 }}
