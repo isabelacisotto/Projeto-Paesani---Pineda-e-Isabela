@@ -47,68 +47,6 @@
     gap: 20px;
 }
 
-.paesani-container {
-  display: flex;
-  flex-direction: column;
-  margin-top: 3%;
-  margin-bottom: 35px;
-  width: 80%;
-}
-
-.paesani-services-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color1);
-  border-left: 5px solid var(--color3);
-  padding-left: 10px;
-  margin-bottom: 30px;
-}
-
-.paesani-services-cards {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: 30px;
-}
-
-.paesani-products-cards {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  flex-wrap: wrap;
-  align-items: stretch;
-  gap: 30px;
-}
-
-.paesani-products-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color1);
-  border-left: 5px solid var(--color3);
-  padding-left: 10px;
-  margin-bottom: 30px;
-}
-
-.paesani-about-title {
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--color1);
-  border-left: 5px solid var(--color3);
-  padding-left: 10px;
-  margin-bottom: 30px;
-}
-
-.paesani-about-cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100%;
-  align-items: center;
-  gap: 20px;
-}
-
 footer {
   margin-top: 50px;
 }

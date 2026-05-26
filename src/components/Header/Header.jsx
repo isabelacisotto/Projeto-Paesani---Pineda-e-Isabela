@@ -9,10 +9,12 @@ export function Header({ search, setSearch, activeTab, setActiveTab }) {
                     <img src="logo.png" alt="Logo Paesani" className='logo' />
                 </div>
                 <nav>
-                    <div className="search">
-                        <Search color='var(--color2)' size={20} />
-                        <input type="text" placeholder='Pesquisar' value={search} onChange={(e) => setSearch(e.target.value)} />
-                    </div>
+                    {activeTab === "services-products" && (
+                        <div className="search">
+                            <Search color='var(--color2)' size={20} />
+                            <input type="text" placeholder='Pesquisar' value={search} onChange={(e) => setSearch(e.target.value)} />
+                        </div>
+                    )}
                     <ul>
                         <li className={activeTab === 'inicio' ? 'active' : ''} onClick={() => setActiveTab('inicio')}>Início</li>
                         <li className={activeTab === 'sobre' ? 'active' : ''} onClick={() => setActiveTab('sobre')}>Sobre</li>
