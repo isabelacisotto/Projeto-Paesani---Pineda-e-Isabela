@@ -9,17 +9,19 @@ import { useState } from "react";
 import { SwiperSlide } from "swiper/react";
 import { motion } from "motion/react";
 import "./ServicesProducts.css";
+import { Search } from "lucide-react";
 
 export default function ServicesProducts() {
-  const [search, setSearch] = useState("");
+  const [servicesSearch, setServicesSearch] = useState("");
+  const [productsSearch, setProductsSearch] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
 
-  const filteredProducts = paesaniProducts.filter((p) =>
-    p.name.toLowerCase().includes(search.toLowerCase()),
+  const filteredServices = paesaniServices.filter((s) =>
+    s.name.toLowerCase().includes(servicesSearch.toLowerCase()),
   );
 
-  const filteredServices = paesaniServices.filter((s) =>
-    s.name.toLowerCase().includes(search.toLowerCase()),
+  const filteredProducts = paesaniProducts.filter((p) =>
+    p.name.toLowerCase().includes(productsSearch.toLowerCase()),
   );
 
   const sliderSettings = {
@@ -34,7 +36,7 @@ export default function ServicesProducts() {
     <>
       <motion.div className="container-slider"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1}}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.3, delay: 0.3 }}
       >
         <Slider settings={sliderSettings}>
@@ -65,9 +67,22 @@ export default function ServicesProducts() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h1 id="paesani-services" className="paesani-services-title">
-          Serviços
-        </h1>
+        <div className="paesani-services-head">
+          <h1 id="paesani-services" className="paesani-services-title">
+            Serviços
+          </h1>
+
+          <div className="search">
+            <Search color='var(--color2)' size={22} />
+            <input 
+              type="text" 
+              placeholder='Pesquisar serviços' 
+              value={servicesSearch} 
+              onChange={(e) => setServicesSearch(e.target.value)} 
+            />
+          </div>
+        </div>
+
         <div className="paesani-services-cards">
           {filteredServices.length > 0 ? (
             filteredServices.map((s) => (
@@ -91,9 +106,22 @@ export default function ServicesProducts() {
         transition={{ duration: 0.5 }}
         viewport={{ once: true }}
       >
-        <h1 id="paesani-products" className="paesani-products-title">
-          Produtos
-        </h1>
+        <div className="paesani-products-head">
+          <h1 id="paesani-products" className="paesani-products-title">
+            Serviços
+          </h1>
+
+          <div className="search">
+            <Search color='var(--color2)' size={20} />
+            <input 
+              type="text" 
+              placeholder='Pesquisar produtos' 
+              value={productsSearch} 
+              onChange={(e) => setProductsSearch(e.target.value)} 
+            />
+          </div>
+        </div>
+
         <div className="paesani-products-cards">
           {filteredProducts.length > 0 ? (
             filteredProducts.map((p) => (

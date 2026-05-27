@@ -24,27 +24,6 @@ nav {
     padding: 20px 50px;
 }
 
-.search {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
-}
-
-.search input {
-    border: 2px solid var(--color2);
-    background-color: var(--bg-color);
-    border-radius: 20px;
-    padding: 6px 25px;
-    margin-right: 40px;
-    width: 370px;
-    outline: none;
-
-    &::placeholder {
-        font-size: 0.8rem;
-    }
-}
-
 nav ul {
     display: flex;
     justify-content: space-between;
