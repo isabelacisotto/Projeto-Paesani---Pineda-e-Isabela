@@ -6,7 +6,7 @@ export default function About() {
     return (
         <>
             <motion.div
-                className="paesani-container"
+                className="paesani-about-container"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}

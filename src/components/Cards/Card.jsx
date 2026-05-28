@@ -52,7 +52,7 @@ export function AboutCard({ name, description }) {
             viewport={{ once: true }}
         >
             <motion.div className="about-card-icon"
-                initial={{ opacity: 0}}
+                initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 transition={{ duration: 0.2 }}
                 viewport={{ once: true }}
@@ -69,13 +69,13 @@ export function AboutCard({ name, description }) {
                 <motion.h4
                     initial={{ opacity: 0, y: 5 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: 0.5 }}
+                    transition={{ duration: 0.2, delay: 0.4 }}
                     viewport={{ once: true }}
                 >{name}</motion.h4>
                 <motion.p
                     initial={{ opacity: 0, y: 5 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2, delay: 0.5 }}
+                    transition={{ duration: 0.2, delay: 0.4 }}
                     viewport={{ once: true }}
                 >{description}</motion.p>
             </div>
@@ -83,11 +83,16 @@ export function AboutCard({ name, description }) {
     )
 }
 
-export function CardModal({ item, onClose, addToCart }) {
+export function CardModal({ item, onClose }) {
     if (!item) return null
 
     const [quantity, setQuantity] = useState(1);
+    const [isAdded, setIsAdded] = useState(false);
     const totalPrice = item.price * quantity;
+
+    const toggleAddedToCart = () => {
+        setIsAdded(isAdded.includes(item.id) ? isAdded.filter((id) => id !== item.id) : [...isAdded, item.id])
+    }
 
     return (
         <>
@@ -100,7 +105,7 @@ export function CardModal({ item, onClose, addToCart }) {
                         <p>disponibilidade: {item.availability}</p>
 
                         <div className="modal-buttons">
-                            <button className="checkout-btn" onClick={() => addToCart(item, quantity)}>
+                            <button className="checkout-btn" onClick={toggleAddedToCart}>
                                 Adicionar ao Carrinho <ShoppingCart size={20} />
                             </button>
                             <div className="add-decrease-button">
@@ -124,5 +129,26 @@ export function CardModal({ item, onClose, addToCart }) {
                 </div>
             </div>
         </>
+    )
+}
+
+export function CheckoutCard({ name, price, image, quantity, isAdded }) {
+    const totalPrice = price * quantity;
+
+    return (
+        <div className="checkout-card">
+            <img src={image} alt={name} className='checkout-card-img' />
+            <div className="checkout-card-info">
+                <h4>{name}</h4>
+                <p>Quantidade: {quantity}</p>
+                <p>Preço total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                {isAdded && (
+                    <p className="added-to-cart">Adicionado ao carrinho!</p>
+                )}
+                <button className="remove-btn">
+                    Remover do Carrinho
+                </button>
+            </div>
+        </div>
     )
 }

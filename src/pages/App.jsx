@@ -6,6 +6,8 @@ import { HomeNavButton } from "@/components/Buttons/HomeNavButton";
 import { motion } from 'framer-motion';
 import ServicesProducts from "./ServicesProducts/ServicesProducts";
 import About from "./About/About";
+import { Suport } from "./Suport/Suport";
+import { Checkout } from "./Checkout/Checkout";
 
 export default function App() {
     const [search, setSearch] = useState("");
@@ -43,8 +45,10 @@ export default function App() {
                     </motion.div>
                 )}
 
-                {activeTab === "services-products" && <ServicesProducts /> }
-                {activeTab === "sobre" && <About /> }
+                {activeTab === "services-products" && <ServicesProducts />}
+                {activeTab === "sobre" && <About />}
+                {activeTab === "suporte" && <Suport />}
+                {activeTab === "carrinho" && <Checkout />}
             </main>
             <Footer />
         </>

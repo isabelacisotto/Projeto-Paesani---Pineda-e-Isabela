@@ -1,0 +1,16 @@
+.paesani-checkout-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5%;
+    margin-bottom: 35px;
+    width: 80%;
+}
+
+.paesani-checkout-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color1);
+    border-left: 5px solid var(--color3);
+    padding-left: 10px;
+    margin-bottom: 30px;
+}

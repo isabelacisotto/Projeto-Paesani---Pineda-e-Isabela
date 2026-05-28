@@ -18,7 +18,7 @@ export function Header({ activeTab, setActiveTab }) {
                     </ul>
                 </nav>
                 <div className="icons">
-                    <ShoppingCart className='icon' color='var(--color2)' size={28} onClick={() => alert('Carrinho')} />
+                    <ShoppingCart className='icon' color='var(--color2)' size={28} onClick={() => setActiveTab('carrinho')} />
                 </div>
             </header>
         </>
