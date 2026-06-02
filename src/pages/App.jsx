@@ -8,6 +8,9 @@ import ServicesProducts from "./ServicesProducts/ServicesProducts";
 import About from "./About/About";
 import { Suport } from "./Suport/Suport";
 import { Checkout } from "./Checkout/Checkout";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { paesaniProducts } from "@/api/paesani.api";
 
 export default function App() {
     const [search, setSearch] = useState("");
@@ -17,17 +20,27 @@ export default function App() {
     useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth", }) }, [activeTab]);
 
     const addToCart = (product, quantity) => {
-        setCart((prev) => {
-            const existing = prev.find((item) => item.id === product.id);
-            if (existing) {
-                return prev.map((item) =>
-                    item.id === product.id
-                        ? { ...item, quantity: item.quantity + quantity }
-                        : item
-                );
-            }
-            return [...prev, { ...product, quantity }];
-        });
+        const findProduct = paesaniProducts.find((p) => p.id === product.id);
+        const productName = findProduct ? findProduct.name : 'Produto';
+        const isAdd = cart.includes((i) => i.id === product.id);
+
+        isAdd ? toast.info(`${productName} removido do carrinho`, {
+            theme: 'light',
+        }) : toast.success(`${productName} adicionado ao carrinho`, {
+            theme: 'light',
+        }),
+
+            setCart((prev) => {
+                const existing = prev.find((item) => item.id === product.id);
+                if (existing) {
+                    return prev.map((item) =>
+                        item.id === product.id
+                            ? { ...item, quantity: item.quantity + quantity }
+                            : item
+                    );
+                }
+                return [...prev, { ...product, quantity }];
+            });
     };
 
     return (
@@ -57,12 +70,12 @@ export default function App() {
                             <HomeNavButton
                                 label="Ver Serviços"
                                 type={"services"}
-                                onClick={() => setActiveTab("services-products")} 
+                                onClick={() => setActiveTab("services-products")}
                             />
                             <HomeNavButton
                                 label="Ver Produtos"
                                 type={"products"}
-                                onClick={() => setActiveTab("services-products")} 
+                                onClick={() => setActiveTab("services-products")}
                             />
                         </div>
                     </motion.div>
@@ -72,6 +85,18 @@ export default function App() {
                 {activeTab === "sobre" && <About />}
                 {activeTab === "suporte" && <Suport />}
                 {activeTab === "carrinho" && <Checkout cart={cart} setCart={setCart} />}
+
+                <ToastContainer
+                    position="bottom-right"
+                    autoClose={3000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    pauseOnHover
+                    theme="light"
+                />
             </main>
             <Footer />
         </>

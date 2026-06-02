@@ -1,7 +1,8 @@
 import { motion } from "framer-motion"
 import './Checkout.css'
 import { CheckoutCard } from "@/components/Cards/Card";
-import { paesaniProducts } from "@/api/paesani.api";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export function Checkout({ cart, setCart }) {
     if (cart.length === 0) return <p>Seu carrinho está vazio.</p>;
@@ -13,7 +14,7 @@ export function Checkout({ cart, setCart }) {
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
         >
-            <h1 className="paesani-checkout-title">Checkout</h1>
+            <h1 className="paesani-checkout-title">Meu Carrinho</h1>
 
             <div className="paesani-checkout-content">
                 {cart.map((item) => (
@@ -24,7 +25,7 @@ export function Checkout({ cart, setCart }) {
                         image={item.image}
                         quantity={item.quantity}
                     />
-                ))} 
+                ))}
             </div>
         </motion.div>
     )

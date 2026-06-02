@@ -47,6 +47,10 @@
     gap: 20px;
 }
 
+.Toastify__progress-bar--success {
+    background: var(--color2) !important; 
+}
+
 footer {
   margin-top: 50px;
 }
