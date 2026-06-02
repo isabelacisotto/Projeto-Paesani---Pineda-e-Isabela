@@ -12,8 +12,23 @@ import { Checkout } from "./Checkout/Checkout";
 export default function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
+    const [cart, setCart] = useState([]);
 
     useEffect(() => { window.scrollTo({ top: 0, behavior: "smooth", }) }, [activeTab]);
+
+    const addToCart = (product, quantity) => {
+        setCart((prev) => {
+            const existing = prev.find((item) => item.id === product.id);
+            if (existing) {
+                return prev.map((item) =>
+                    item.id === product.id
+                        ? { ...item, quantity: item.quantity + quantity }
+                        : item
+                );
+            }
+            return [...prev, { ...product, quantity }];
+        });
+    };
 
     return (
         <>
@@ -39,16 +54,24 @@ export default function App() {
                         <h3 className="paesani-home-description">Somos referência em refrigeração e cuidados especializados.</h3>
 
                         <div className="paesani-home-nav-buttons">
-                            <HomeNavButton label="Ver Serviços" type={"services"} onClick={() => setActiveTab("services-products")} />
-                            <HomeNavButton label="Ver Produtos" type={"products"} onClick={() => setActiveTab("services-products")} />
+                            <HomeNavButton
+                                label="Ver Serviços"
+                                type={"services"}
+                                onClick={() => setActiveTab("services-products")} 
+                            />
+                            <HomeNavButton
+                                label="Ver Produtos"
+                                type={"products"}
+                                onClick={() => setActiveTab("services-products")} 
+                            />
                         </div>
                     </motion.div>
                 )}
 
-                {activeTab === "services-products" && <ServicesProducts />}
+                {activeTab === "services-products" && <ServicesProducts addToCart={addToCart} />}
                 {activeTab === "sobre" && <About />}
                 {activeTab === "suporte" && <Suport />}
-                {activeTab === "carrinho" && <Checkout />}
+                {activeTab === "carrinho" && <Checkout cart={cart} setCart={setCart} />}
             </main>
             <Footer />
         </>

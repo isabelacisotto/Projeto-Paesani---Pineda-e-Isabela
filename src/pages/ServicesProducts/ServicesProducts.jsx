@@ -11,7 +11,7 @@ import { motion } from "motion/react";
 import "./ServicesProducts.css";
 import { Search } from "lucide-react";
 
-export default function ServicesProducts() {
+export default function ServicesProducts({ addToCart }) {
   const [servicesSearch, setServicesSearch] = useState("");
   const [productsSearch, setProductsSearch] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
@@ -117,7 +117,7 @@ export default function ServicesProducts() {
               type="text" 
               placeholder='Pesquisar produtos' 
               value={productsSearch} 
-              onChange={(e) => setProductsSearch(e.target.value)} 
+              onChange={(e) => setProductsSearch(e.target.value)}
             />
           </div>
         </div>
@@ -139,7 +139,10 @@ export default function ServicesProducts() {
         </div>
       </motion.div>
       {selectedItem && (
-        <CardModal item={selectedItem} onClose={() => setSelectedItem(null)} />
+        <CardModal 
+        item={selectedItem} 
+        onClose={() => setSelectedItem(null)} 
+        addToCart={addToCart} />
       )}
     </>
   );

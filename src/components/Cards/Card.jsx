@@ -83,15 +83,15 @@ export function AboutCard({ name, description }) {
     )
 }
 
-export function CardModal({ item, onClose }) {
+export function CardModal({ item, onClose, addToCart }) {
     if (!item) return null
 
     const [quantity, setQuantity] = useState(1);
-    const [isAdded, setIsAdded] = useState(false);
     const totalPrice = item.price * quantity;
 
     const toggleAddedToCart = () => {
-        setIsAdded(isAdded.includes(item.id) ? isAdded.filter((id) => id !== item.id) : [...isAdded, item.id])
+        addToCart(item, quantity);
+        onClose();
     }
 
     return (
