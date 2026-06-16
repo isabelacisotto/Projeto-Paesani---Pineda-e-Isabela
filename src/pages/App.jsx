@@ -9,8 +9,8 @@ import About from "./About/About";
 import { Suport } from "./Suport/Suport";
 import { Checkout } from "./Checkout/Checkout";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { paesaniProducts } from "@/api/paesani.api";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function App() {
     const [search, setSearch] = useState("");

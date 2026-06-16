@@ -16,14 +16,14 @@
 }
 
 .paesani-home-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 550px;
-    text-align: center;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 550px;
+  text-align: center;
+  gap: 20px;
 }
 
 .paesani-home-container h1 {
@@ -42,13 +42,13 @@
 }
 
 .paesani-home-container .paesani-home-nav-buttons {
-    display: flex;
-    margin-top: 8px;
-    gap: 20px;
+  display: flex;
+  margin-top: 8px;
+  gap: 20px;
 }
 
 .Toastify__progress-bar--success {
-    background: var(--color2) !important; 
+  background: var(--color2) !important;
 }
 
 footer {

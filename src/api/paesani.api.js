@@ -44,16 +44,28 @@ export const paesaniProducts = [
         modalDescription: "Controles remotos universais compatíveis com diversas marcas e modelos de ar-condicionado. Possuem configuração simples, design ergonômico e funções completas para ajuste de temperatura, velocidade, modos de operação e timer. Ideal para substituir controles danificados ou perdidos com praticidade e eficiência.",
         price: 29.99,
         availability: "Em estoque",
-        image: controle
+        image: controle,
+        especifications: [
+            "Compatível com diversas marcas",
+            "Configuração simples e rápida",
+            "Design ergonômico e moderno",
+            "Longo alcance",
+        ]
     },
     {
-        id: 2,
+        id: 2, 
         name: "Filtro de Carvão Ativado",
         description: "Tecnologia avançada para neutralizar odores e filtrar partículas finas no ambiente.",
         modalDescription: "Filtros de carvão ativado desenvolvidos para melhorar a qualidade do ar, ajudando na remoção de odores, poeira, fumaça e partículas finas presentes no ambiente. Proporcionam um ar mais limpo, fresco e saudável, sendo ideais para residências, escritórios e ambientes climatizados.",
         price: 19.99,
         availability: "Em estoque",
-        image: filtro
+        image: filtro,
+        especifications: [
+            "Tecnologia de carvão ativado",
+            "Eficaz na neutralização de odores",
+            "Filtra partículas finas e poeira",
+            "Melhora a qualidade do ar",
+        ]
     },
     {
         id: 3,
@@ -62,7 +74,13 @@ export const paesaniProducts = [
         modalDescription: "Defletores de ar projetados para direcionar o fluxo do ar-condicionado de maneira mais confortável e eficiente. Evitam o contato direto com o vento frio, auxiliando no bem-estar de crianças, idosos e pessoas sensíveis ao ar gelado. Fácil instalação e compatibilidade com diferentes modelos.",
         price: 14.99,
         availability: "Em estoque",
-        image: defletor
+        image: defletor,
+        especifications: [
+            "Direciona o fluxo de ar",
+            "Evita contato direto com vento frio",
+            "Ideal para crianças e idosos",
+            "Fácil instalação e compatibilidade",
+        ]
     },
     {
         id: 4,
@@ -71,7 +89,15 @@ export const paesaniProducts = [
         modalDescription: "Trabalhamos com aparelhos de ar-condicionado novos das principais marcas do mercado, oferecendo tecnologia moderna, alta eficiência energética e excelente desempenho. Modelos ideais para residências, empresas e ambientes comerciais, com garantia, suporte técnico e instalação especializada.",
         price: 1999.99,
         availability: "Em estoque",
-        image: equipamentos
+        image: equipamentos,
+        especifications: [
+            "Tecnologia moderna",
+            "Alta eficiência energética",
+            "Excelente desempenho",
+            "Garantia",
+            "Suporte técnico",
+            "Instalação especializada"
+        ]
     }
 ]
 

@@ -130,6 +130,8 @@ export default function ServicesProducts({ addToCart }) {
                 name={p.name}
                 description={p.description}
                 image={p.image}
+                especifications={p.especifications}
+                product={true}
                 onModalOpen={() => setSelectedItem(p)}
               />
             ))

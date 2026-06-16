@@ -1,40 +1,58 @@
-import { ChartNoAxesCombined, Footprints, Lightbulb, ScrollText, ShoppingCart, Trophy, Users, X } from 'lucide-react';
+import { ChartNoAxesCombined, CircleCheckBig, Footprints, Lightbulb, ScrollText, ShoppingCart, Trophy, Users, X } from 'lucide-react';
 import './Card.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 export function ServicesCard({ name, description, image }) {
     return (
-        <motion.div className="card"
+        <motion.div className="service-card"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
             viewport={{ once: true }}
         >
-            <img src={image} alt={name} className='card-img' />
+            <img src={image} alt={name} className='service-card-img' />
 
-            <div className="card-info">
+            <div className="service-card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
-                <button className="play-btn"> Contrate já! </button>
+                <button className="play-btn"> Contrate já!</button>
             </div>
         </motion.div>
     )
 }
 
-export function ProductsCard({ name, description, image, onModalOpen }) {
+export function ProductsCard({ name, description, image, especifications, product, onModalOpen }) {
     return (
-        <motion.div className="card"
+        <motion.div className="product-card"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3 }}
             viewport={{ once: true }}
         >
-            <img src={image} alt={name} className='card-img' />
+            <div className="product-card-img-bg">
+                <div className="product-card-img">
+                        <img src={image} alt={name} style={{
+                            width: '80%',
+                            height: '100%',
+                            objectFit: 'cover',
+                            marginTop: "50px"
+                        }} />
+                </div>
+            </div>
 
-            <div className="card-info">
+            <div className="product-card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
+                <hr />
+                <ul className="product-card-especifications">
+                    {especifications.map((spec, index) => (
+                        <li key={index} className="product-card-especification-item">
+                            <CircleCheckBig size={16} color="var(--color2)" />
+                            {spec}
+                        </li>
+                    ))}
+                </ul>
                 <button className="play-btn" onClick={onModalOpen}>
                     Compre aqui!
                 </button>
