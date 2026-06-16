@@ -150,9 +150,28 @@ export function CardModal({ item, onClose, addToCart }) {
     )
 }
 
-export function CheckoutCard({ name, price, image, quantity, isAdded, description }) {
-    const [quantityCount, setQuantityCount] = useState(1);
+export function CheckoutCard({ id, name, price, image, quantity, description, setCart, onRemoveItem }) {
+    const [quantityCount, setQuantityCount] = useState(quantity || 1);
     const totalPrice = price * quantityCount;
+
+    const handleRemove = () => {
+        if (onRemoveItem) onRemoveItem(id);
+        if (setCart) setCart((prev) => prev.filter((item) => item.id !== id));
+    };
+
+    const handleQuantityChange = (newQuantity) => {
+        if (newQuantity < 1) return;
+        setQuantityCount(newQuantity);
+        if (setCart) {
+            setCart((prev) =>
+                prev.map((item) =>
+                    item.id === id
+                        ? { ...item, quantity: newQuantity }
+                        : item
+                )
+            );
+        }
+    };
 
     return (
         <div className="checkout-card">
@@ -161,21 +180,18 @@ export function CheckoutCard({ name, price, image, quantity, isAdded, descriptio
             <div className="checkout-card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
-                {isAdded && (
-                    <p className="added-to-cart">Adicionado ao carrinho!</p>
-                )}
 
                 <div className="checkout-buttons">
-                    <button onClick={() => { }} className="remove-btn">
+                    <button onClick={handleRemove} className="remove-btn" title="Remover do carrinho">
                         <Trash size={16} color="white" />
                     </button>
-                    
+
                     <div className="add-decrease-button">
-                        <button className="decrease-btn" onClick={() => setQuantityCount(Math.max(1, quantityCount - 1))}>
-                            -
+                        <button className="decrease-btn" onClick={() => handleQuantityChange(quantityCount - 1)}>
+                            −
                         </button>
                         <span className="quantity">{quantityCount}</span>
-                        <button className="increase-btn" onClick={() => setQuantityCount(quantityCount + 1)}>
+                        <button className="increase-btn" onClick={() => handleQuantityChange(quantityCount + 1)}>
                             +
                         </button>
                     </div>
@@ -183,7 +199,7 @@ export function CheckoutCard({ name, price, image, quantity, isAdded, descriptio
             </div>
 
             <div className="checkout-card-price">
-                <p>Preço total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                <p>R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
             </div>
         </div>
     )

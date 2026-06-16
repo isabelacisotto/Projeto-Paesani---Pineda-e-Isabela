@@ -22,25 +22,38 @@ export default function App() {
     const addToCart = (product, quantity) => {
         const findProduct = paesaniProducts.find((p) => p.id === product.id);
         const productName = findProduct ? findProduct.name : 'Produto';
-        const isAdd = cart.includes((i) => i.id === product.id);
+        const existing = cart.find((item) => item.id === product.id);
 
-        isAdd ? toast.info(`${productName} removido do carrinho`, {
-            theme: 'light',
-        }) : toast.success(`${productName} adicionado ao carrinho`, {
-            theme: 'light',
-        }),
-
-            setCart((prev) => {
-                const existing = prev.find((item) => item.id === product.id);
-                if (existing) {
-                    return prev.map((item) =>
-                        item.id === product.id
-                            ? { ...item, quantity: item.quantity + quantity }
-                            : item
-                    );
-                }
-                return [...prev, { ...product, quantity }];
+        if (existing) {
+            toast.info(`${productName} atualizado no carrinho`, {
+                theme: 'light',
             });
+        } else {
+            toast.success(`${productName} adicionado ao carrinho`, {
+                theme: 'light',
+            });
+        }
+
+        setCart((prev) => {
+            const existing = prev.find((item) => item.id === product.id);
+            if (existing) {
+                return prev.map((item) =>
+                    item.id === product.id
+                        ? { ...item, quantity: item.quantity + quantity }
+                        : item
+                );
+            }
+            return [...prev, { ...product, quantity }];
+        });
+    };
+
+    const removeFromCart = (productId) => {
+        setCart((prev) => prev.filter((item) => item.id !== productId));
+        const product = cart.find((p) => p.id === productId);
+        const productName = product ? product.name : 'Produto';
+        toast.info(`${productName} removido do carrinho`, {
+            theme: 'light',
+        });
     };
 
     return (
@@ -84,7 +97,7 @@ export default function App() {
                 {activeTab === "services-products" && <ServicesProducts addToCart={addToCart} />}
                 {activeTab === "sobre" && <About />}
                 {activeTab === "suporte" && <Suport />}
-                {activeTab === "carrinho" && <Checkout cart={cart} setCart={setCart} />}
+                {activeTab === "carrinho" && <Checkout cart={cart} setCart={setCart} onRemoveItem={removeFromCart} />}
 
                 <ToastContainer
                     position="bottom-right"

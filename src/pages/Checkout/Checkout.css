@@ -14,3 +14,39 @@
     padding-left: 10px;
     margin-bottom: 30px;
 }
+
+.paesani-checkout-buttons {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.paesani-checkout-btn, .paesani-clear-cart-btn {
+    background-color: var(--color2);
+    color: #fff;
+    border: none;
+    padding: 12px 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-right: 10px;
+    width: 200px;
+    border-radius: 20px;
+    transition: 0.2s ease;
+}
+
+.paesani-clear-cart-btn:hover {
+    background-color: var(--color3);
+}
+
+.paesani-checkout-btn:hover {
+    background-color: var(--color3);
+}
+
+.paesani-checkout-buttons p {
+    margin-left: 46%;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--color2);
+}

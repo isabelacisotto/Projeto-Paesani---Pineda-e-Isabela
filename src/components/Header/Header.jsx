@@ -12,8 +12,6 @@ export function Header({ activeTab, setActiveTab }) {
                     <ul>
                         <li className={activeTab === 'inicio' ? 'active' : ''} onClick={() => setActiveTab('inicio')}>Início</li>
                         <li className={activeTab === 'sobre' ? 'active' : ''} onClick={() => setActiveTab('sobre')}>Sobre</li>
-                        <li className={activeTab === 'services-products' ? 'active' : ''} style={{ color: 'var(--color2)', cursor: 'pointer' }} onClick={() => setActiveTab('services-products')}>Produtos</li>
-                        <li className={activeTab === 'services-products' ? 'active' : ''} style={{ color: 'var(--color2)', cursor: 'pointer' }} onClick={() => setActiveTab('services-products')}>Serviços</li>
                         <li onClick={() => { document.getElementById("footer").scrollIntoView({ behavior: "smooth", }); }}>Contatos</li>
                         <li onClick={() => { document.getElementById("footer").scrollIntoView({ behavior: "smooth", }); }}>Endereço</li>
                         <li className={activeTab === 'suporte' ? 'active' : ''} onClick={() => setActiveTab('suporte')}>Suporte</li>
