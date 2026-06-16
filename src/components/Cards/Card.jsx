@@ -1,4 +1,4 @@
-import { ChartNoAxesCombined, CircleCheckBig, Footprints, Lightbulb, ScrollText, ShoppingCart, Trophy, Users, X } from 'lucide-react';
+import { ChartNoAxesCombined, CircleCheckBig, Footprints, Lightbulb, ScrollText, ShoppingCart, Trash, Trophy, Users, X } from 'lucide-react';
 import './Card.css';
 import { motion } from 'framer-motion';
 import { useState } from 'react';
@@ -32,12 +32,12 @@ export function ProductsCard({ name, description, image, especifications, produc
         >
             <div className="product-card-img-bg">
                 <div className="product-card-img">
-                        <img src={image} alt={name} style={{
-                            width: '80%',
-                            height: '100%',
-                            objectFit: 'cover',
-                            marginTop: "50px"
-                        }} />
+                    <img src={image} alt={name} style={{
+                        width: '80%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        marginTop: "50px"
+                    }} />
                 </div>
             </div>
 
@@ -150,22 +150,40 @@ export function CardModal({ item, onClose, addToCart }) {
     )
 }
 
-export function CheckoutCard({ name, price, image, quantity, isAdded }) {
-    const totalPrice = price * quantity;
+export function CheckoutCard({ name, price, image, quantity, isAdded, description }) {
+    const [quantityCount, setQuantityCount] = useState(1);
+    const totalPrice = price * quantityCount;
 
     return (
         <div className="checkout-card">
             <img src={image} alt={name} className='checkout-card-img' />
+
             <div className="checkout-card-info">
                 <h4>{name}</h4>
-                <p>Quantidade: {quantity}</p>
-                <p>Preço total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
+                <p>{description}</p>
                 {isAdded && (
                     <p className="added-to-cart">Adicionado ao carrinho!</p>
                 )}
-                <button className="remove-btn">
-                    Remover do Carrinho
-                </button>
+
+                <div className="checkout-buttons">
+                    <button onClick={() => { }} className="remove-btn">
+                        <Trash size={16} color="white" />
+                    </button>
+                    
+                    <div className="add-decrease-button">
+                        <button className="decrease-btn" onClick={() => setQuantityCount(Math.max(1, quantityCount - 1))}>
+                            -
+                        </button>
+                        <span className="quantity">{quantityCount}</span>
+                        <button className="increase-btn" onClick={() => setQuantityCount(quantityCount + 1)}>
+                            +
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div className="checkout-card-price">
+                <p>Preço total: R$ {totalPrice.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</p>
             </div>
         </div>
     )

@@ -108,7 +108,7 @@ export default function ServicesProducts({ addToCart }) {
       >
         <div className="paesani-products-head">
           <h1 id="paesani-products" className="paesani-products-title">
-            Serviços
+            Produtos
           </h1>
 
           <div className="search">

@@ -24,6 +24,7 @@ export function Checkout({ cart, setCart }) {
                         price={item.price}
                         image={item.image}
                         quantity={item.quantity}
+                        description={item.description}
                     />
                 ))}
             </div>

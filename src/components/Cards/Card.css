@@ -340,6 +340,10 @@
     transition: background-color 0.2s, transform 0.2s;
 }
 
+.modal-banner-container {
+    background-color: #E2E8ED;
+}
+
 .modal-banner-container button {
     position: absolute;
     top: 20px;
@@ -360,4 +364,130 @@
 
 .modal-banner-container button:hover {
     transform: scale(1.02);
+}
+
+.checkout-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-color);
+    box-shadow: 0px 4px 10px #dededec3;
+    width: 100%;
+    min-height: 140px;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s ease;
+    gap: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.checkout-card-img {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    background-color: #E2E8ED;
+    border-radius: 12px;
+    padding: 10px;
+    flex-shrink: 0;
+}
+
+.checkout-card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkout-card-info h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color2);
+    margin: 0;
+}
+
+.checkout-card-info p {
+    font-size: 0.85rem;
+    color: #6d6d6d;
+    margin: 0;
+}
+
+.added-to-cart {
+    color: var(--color3) !important;
+    font-weight: 600;
+}
+
+.checkout-card-price {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color2);
+    margin-top: 10px;
+    margin-right: 30px;
+}
+
+.checkout-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.remove-btn {
+    padding: 12px 12px;
+    background-color: var(--color2);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.8rem;
+    transition: background-color 0.2s, transform 0.2s;
+    width: fit-content;
+}
+
+.remove-btn:hover {
+    background-color: var(--color3);
+}
+
+.remove-btn:active {
+    transform: scale(0.98);
+}
+
+.checkout-buttons .add-decrease-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--bg-color);
+}
+
+.checkout-buttons .add-decrease-button span {
+    text-align: center;
+    font-size: 0.80rem;
+    font-weight: 500;
+    color: var(--color2);
+    width: 10px;
+}
+
+.checkout-buttons .add-decrease-button .decrease-btn {
+    padding: 10px;
+    background-color: var(--color2);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.80rem;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.checkout-buttons .add-decrease-button .increase-btn {
+    padding: 10px;
+    background-color: var(--color2);
+    color: var(--bg-color);
+    border: none;
+    border-radius: 0 8px 8px 0;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 0.80rem;
+    transition: background-color 0.2s, transform 0.2s;
 }
