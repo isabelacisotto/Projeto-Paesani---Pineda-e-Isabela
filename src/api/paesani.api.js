@@ -94,7 +94,6 @@ export const paesaniProducts = [
             "Tecnologia moderna",
             "Alta eficiência energética",
             "Excelente desempenho",
-            "Garantia",
             "Suporte técnico",
             "Instalação especializada"
         ]
