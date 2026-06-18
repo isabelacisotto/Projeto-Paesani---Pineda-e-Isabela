@@ -12,7 +12,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { paesaniProducts } from "@/api/paesani.api";
 import "react-toastify/dist/ReactToastify.css";
 
-export default function App() {
+function App() {
     const [search, setSearch] = useState("");
     const [activeTab, setActiveTab] = useState("inicio");
     const [cart, setCart] = useState([]);
@@ -115,3 +115,5 @@ export default function App() {
         </>
     );
 }
+
+export default App;
