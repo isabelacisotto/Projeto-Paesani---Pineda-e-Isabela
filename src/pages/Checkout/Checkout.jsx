@@ -4,6 +4,15 @@ import { CheckoutCard } from "@/components/Cards/Card";
 import "react-toastify/dist/ReactToastify.css";
 
 export function Checkout({ cart, setCart, onRemoveItem }) {
+    const handleWhatsAppCheckout = () => {
+        const phone = '5515991529492';
+        const cartItems = cart.map(item => `${item.name} (x${item.quantity}) - R$${(item.price * item.quantity).toFixed(2)}`).join('\n');
+        const total = cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2);
+        const message = `Olá! Gostaria de finalizar a seguinte compra:\n\n${cartItems}\n\nTotal: R$${total}`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    };
+
     return (
         <motion.div
             className="paesani-checkout-container"
@@ -33,7 +42,7 @@ export function Checkout({ cart, setCart, onRemoveItem }) {
                     ))}
 
                     <div className="paesani-checkout-buttons">
-                        <button className="paesani-checkout-btn">
+                        <button className="paesani-checkout-btn" onClick={handleWhatsAppCheckout}>
                             Finalizar Compra
                         </button>
 

@@ -4,6 +4,13 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 
 export function ServicesCard({ name, description, image }) {
+    const handleWhatsApp = () => {
+        const phone = '5515991529492';
+        const message = `Olá! Gostaria de mais informações sobre o serviço: ${name}`;
+        const url = `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    };
+
     return (
         <motion.div className="service-card"
             initial={{ opacity: 0, y: 10 }}
@@ -16,7 +23,7 @@ export function ServicesCard({ name, description, image }) {
             <div className="service-card-info">
                 <h4>{name}</h4>
                 <p>{description}</p>
-                <button className="play-btn"> Contrate já!</button>
+                <button className="play-btn" onClick={handleWhatsApp}> Contrate já!</button>
             </div>
         </motion.div>
     )

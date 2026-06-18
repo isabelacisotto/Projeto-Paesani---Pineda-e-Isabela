@@ -78,4 +78,21 @@
         width: 100%;
         margin-top: 8px;
     }
+
+    .paesani-suport-form-btn {
+        display: flex;
+        align-items: center;
+        background-color: var(--color2);
+        color: #fff;
+        padding: 10px 60px;
+        border: none;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+            background-color: var(--color1);
+        }
+    }
 }
